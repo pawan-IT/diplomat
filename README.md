@@ -14,7 +14,7 @@ Diplomat is compatible with applications using MapLibre GL&nbsp;JS v5.13.0 and a
 
 The stylesheet must use the newer [expression](https://maplibre.org/maplibre-style-spec/expressions/) syntax; [legacy style functions](https://maplibre.org/maplibre-style-spec/deprecations/#function) are not supported. The stylesheet’s sources must conform to [Diplomat’s schema](#schema). Several popular vector tilesets already conform to this schema, including:
 
-- [OpenMapTiles](https://openmaptiles.org/schema/) implementations, e.g., [MapTiler](https://cloud.maptiler.com/tiles/v3-openmaptiles/), [OpenFreeMap](https://openfreemap.org/), [OpenStreetMap U.S.](https://tiles.openstreetmap.us/vector/openmaptiles/), [Stadia Maps](https://docs.stadiamaps.com/vector/))
+- [OpenMapTiles](https://openmaptiles.org/schema/) implementations, e.g., [MapTiler](https://cloud.maptiler.com/tiles/v3-openmaptiles/), [OpenFreeMap](https://openfreemap.org/), [OpenStreetMap U.S.](https://tiles.openstreetmap.us/vector/openmaptiles/), [Stadia Maps](https://docs.stadiamaps.com/vector/)
 - [Tilezen](https://tilezen.readthedocs.io/en/latest/layers/) implementations, e.g., [Protomaps](https://protomaps.com/)
 
 With additional configuration, Diplomat supports even more vector tilesets, including:
