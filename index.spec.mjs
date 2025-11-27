@@ -35,29 +35,29 @@ describe("getLanguageFromURL", function () {
   it("accepts an unset language", function () {
     assert.strictEqual(
       getLanguageFromURL(new URL("http://localhost:1776/#map=1/2/3")),
-      null
+      null,
     );
   });
   it("accepts an empty language", function () {
     assert.strictEqual(
       getLanguageFromURL(new URL("http://localhost:1776/#map=1/2/3&language=")),
-      null
+      null,
     );
   });
   it("accepts an ISO 639 code", function () {
     assert.strictEqual(
       getLanguageFromURL(
-        new URL("http://localhost:1776/#map=1/2/3&language=tlh")
+        new URL("http://localhost:1776/#map=1/2/3&language=tlh"),
       ),
-      "tlh"
+      "tlh",
     );
   });
   it("accepts arbitrary text", function () {
     assert.strictEqual(
       getLanguageFromURL(
-        new URL("http://localhost:1776/#map=1/2/3&language=the King's English")
+        new URL("http://localhost:1776/#map=1/2/3&language=the King's English"),
       ),
-      "the King's English"
+      "the King's English",
     );
   });
 });
@@ -97,11 +97,11 @@ describe("getLocales", function () {
   });
   it("gets locales from the URL", function () {
     window.location = new URL(
-      "http://localhost:1776/#map=1/2/3&language=tlh-UN,ase"
+      "http://localhost:1776/#map=1/2/3&language=tlh-UN,ase",
     );
     assert.deepEqual(getLocales(), ["tlh-UN", "tlh", "ase"]);
     window.location = new URL(
-      "http://localhost:1776/#map=1/2/3&language=en-t-zh,zh-u-nu-hant,en-u-sd-usnc,es-fonipa,fr-x-gallo"
+      "http://localhost:1776/#map=1/2/3&language=en-t-zh,zh-u-nu-hant,en-u-sd-usnc,es-fonipa,fr-x-gallo",
     );
     assert.deepEqual(getLocales(), [
       "en-t-zh",
@@ -119,7 +119,7 @@ describe("getLocales", function () {
 
 describe("getLocalizedNameExpression", function () {
   it("coalesces names in each locale", function () {
-    assert.deepEqual(getLocalizedNameExpression(["en-US", "en", "fr"], false), [
+    assert.deepEqual(getLocalizedNameExpression(["en-US", "en", "fr"]), [
       "coalesce",
       ["get", "name:en-US"],
       ["get", "name:en"],
@@ -190,7 +190,9 @@ describe("localizeLayers", function () {
     localizeLayers(layers, ["en"]);
     assert.strictEqual(layers[0].layout["text-field"], "Null Island");
     assert(
-      layers[1].layout["text-field"][2].some((expr) => expr.includes("name:en"))
+      layers[1].layout["text-field"][2].some((expr) =>
+        expr.includes("name:en"),
+      ),
     );
   });
   it("uses legacy name fields in transportation name layers", function () {
@@ -204,7 +206,9 @@ describe("localizeLayers", function () {
     ];
     localizeLayers(layers, ["en"]);
     assert(
-      layers[0].layout["text-field"][2].some((expr) => expr.includes("name_en"))
+      layers[0].layout["text-field"][2].some((expr) =>
+        expr.includes("name_en"),
+      ),
     );
   });
   it("updates collator", function () {
@@ -292,9 +296,9 @@ describe("localizedName", function () {
       expression.createExpression(localizedName).value.expression.evaluate(
         expressionContext({
           name: "Null Island",
-        })
+        }),
       ),
-      ""
+      "",
     );
   });
   it("localizes to preferred language", function () {
@@ -303,7 +307,7 @@ describe("localizedName", function () {
         "name:en": "Null Island",
         name: "Insula Nullius",
       }),
-      "Null Island"
+      "Null Island",
     );
   });
 });
@@ -312,7 +316,7 @@ describe("localizedNameWithLocalGloss", function () {
   let evaluatedExpression = (locales, properties) =>
     expression
       .createExpression(
-        localizedTextField([...localizedNameWithLocalGloss], locales)
+        localizedTextField([...localizedNameWithLocalGloss], locales),
       )
       .value.expression.evaluate(expressionContext(properties));
 
@@ -329,7 +333,7 @@ describe("localizedNameWithLocalGloss", function () {
     localized,
     local,
     expectedLabel,
-    expectedGloss
+    expectedGloss,
   ) => {
     let properties = {
       name: local,
@@ -357,7 +361,7 @@ describe("localizedNameWithLocalGloss", function () {
     assert.equal(evaluated.sections.length, 1);
     assert.strictEqual(
       evaluated.sections[0].text,
-      "Null Island\nInsula Nullius"
+      "Null Island\nInsula Nullius",
     );
   });
   it("glosses an anglicized name with the local name", function () {
@@ -388,7 +392,7 @@ describe("localizedNameWithLocalGloss", function () {
       "en",
       "Santiago de Querétaro",
       "Querétaro",
-      "Santiago de Querétaro"
+      "Santiago de Querétaro",
     );
 
     // Suboptimal but expected cases
@@ -399,7 +403,7 @@ describe("localizedNameWithLocalGloss", function () {
       "Derry",
       "Derry/Londonderry",
       "Derry",
-      "Derry/Londonderry"
+      "Derry/Londonderry",
     );
   });
   it("glosses non-English localized name with lookalike local name", function () {
@@ -408,7 +412,7 @@ describe("localizedNameWithLocalGloss", function () {
       "Los Ángeles",
       "Los Angeles",
       "Los Ángeles",
-      "Los Angeles"
+      "Los Angeles",
     );
     expectGloss("es", "Montreal", "Montréal", "Montreal", "Montréal");
     expectGloss("es", "Quebec", "Québec", "Quebec", "Québec");
@@ -421,7 +425,7 @@ describe("localizedNameWithLocalGloss", function () {
       "Null Island",
       "Terra Nullius;空虛島",
       "Null Island",
-      "Terra Nullius • 空虛島"
+      "Terra Nullius • 空虛島",
     );
   });
   it("deduplicates anglicized name and one of the local names", function () {
@@ -430,28 +434,28 @@ describe("localizedNameWithLocalGloss", function () {
       "Null Island",
       "Null Island;Terra Nullius;空虛島",
       "Null Island",
-      "Terra Nullius • 空虛島"
+      "Terra Nullius • 空虛島",
     );
     expectGloss(
       "en",
       "Null Island",
       "Terra Nullius;Null Island;空虛島",
       "Null Island",
-      "Terra Nullius • 空虛島"
+      "Terra Nullius • 空虛島",
     );
     expectGloss(
       "en",
       "Null Island",
       "Terra Nullius;空虛島;Null Island",
       "Null Island",
-      "Terra Nullius • 空虛島"
+      "Terra Nullius • 空虛島",
     );
     expectGloss(
       "en",
       "Null Island",
       "Null Island;Null Island;Null Island",
       "Null Island",
-      ""
+      "",
     );
   });
 });
@@ -462,8 +466,8 @@ describe("listValuesExpression", function () {
       .createExpression(
         localizedTextField(
           [...listValuesExpression(valueList, separator, valueToOmit)],
-          ["en"]
-        )
+          ["en"],
+        ),
       )
       .value.expression.evaluate(expressionContext({}));
 
@@ -483,7 +487,7 @@ describe("listValuesExpression", function () {
     assert.strictEqual(evaluatedExpression("ABC;DEF", ", "), "ABC, DEF");
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;GHI", ", "),
-      "ABC, DEF, GHI"
+      "ABC, DEF, GHI",
     );
     assert.strictEqual(evaluatedExpression(";ABC;DEF", ", "), ", ABC, DEF");
     assert.strictEqual(evaluatedExpression("ABC;DEF;", ", "), "ABC, DEF, ");
@@ -497,15 +501,15 @@ describe("listValuesExpression", function () {
     assert.strictEqual(evaluatedExpression("ABC;;DEF", ", "), "ABC;DEF");
     assert.strictEqual(
       evaluatedExpression("ABC;;DEF;GHI", ", "),
-      "ABC;DEF, GHI"
+      "ABC;DEF, GHI",
     );
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;;GHI", ", "),
-      "ABC, DEF;GHI"
+      "ABC, DEF;GHI",
     );
     assert.strictEqual(
       evaluatedExpression("ABC;;DEF;;GHI", ", "),
-      "ABC;DEF;GHI"
+      "ABC;DEF;GHI",
     );
     assert.strictEqual(evaluatedExpression("ABC;;;DEF", ", "), "ABC;, DEF");
     assert.strictEqual(evaluatedExpression("ABC;;;;DEF", ", "), "ABC;;DEF");
@@ -514,7 +518,7 @@ describe("listValuesExpression", function () {
   it("accepts an expression as the separator", function () {
     assert.strictEqual(
       evaluatedExpression("ABC;DEF", ["concat", ", "]),
-      "ABC, DEF"
+      "ABC, DEF",
     );
   });
 
@@ -523,35 +527,35 @@ describe("listValuesExpression", function () {
     assert.strictEqual(
       evaluatedExpression(
         "马岔河村;菜园村;刘灿东村;后于口村;王石楼村;李岔河村;岔河新村;富康新村;前鱼口村",
-        "、"
+        "、",
       ),
-      "马岔河村、菜园村、刘灿东村;后于口村;王石楼村;李岔河村;岔河新村;富康新村;前鱼口村"
+      "马岔河村、菜园村、刘灿东村;后于口村;王石楼村;李岔河村;岔河新村;富康新村;前鱼口村",
     );
     assert.strictEqual(
       evaluatedExpression(
         "one;two;three;four;five;six;seven;eight;nine;ten",
-        ", "
+        ", ",
       ),
-      "one, two, three;four;five;six;seven;eight;nine;ten"
+      "one, two, three;four;five;six;seven;eight;nine;ten",
     );
   });
 
   it("omits a specified value", function () {
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;GHI", ", ", ""),
-      "ABC, DEF, GHI"
+      "ABC, DEF, GHI",
     );
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;GHI", ", ", "ABC"),
-      "DEF, GHI"
+      "DEF, GHI",
     );
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;GHI", ", ", "DEF"),
-      "ABC, GHI"
+      "ABC, GHI",
     );
     assert.strictEqual(
       evaluatedExpression("ABC;DEF;GHI", ", ", "GHI"),
-      "ABC, DEF"
+      "ABC, DEF",
     );
   });
 });

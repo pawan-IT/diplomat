@@ -104,7 +104,7 @@ export function localizeLayers(layers, locales = getLocales()) {
         // https://github.com/openmaptiles/openmaptiles/issues/769
         layer["source-layer"] === "transportation_name"
           ? legacyLocalizedNameExpression
-          : localizedNameExpression
+          : localizedNameExpression,
       );
 
       updateVariable(textField, localizedCollatorVariable, [
@@ -141,7 +141,7 @@ export function localizeLayers(layers, locales = getLocales()) {
         ?.toLocaleUpperCase(locales)
         // Word boundaries are less discernible in uppercase text, so pad each word by an additional space.
         .replaceAll(" ", "  ") ?? null,
-    ])
+    ]),
   );
   Object.assign(countryNamesByCode, localizedCountryNamesByCode);
 }
@@ -170,7 +170,7 @@ function listValueExpression(
   separator,
   valueToOmit,
   listStart,
-  numReplacements
+  numReplacements,
 ) {
   let asIs = ["slice", list, listStart];
   if (numReplacements <= 0) {
@@ -265,7 +265,7 @@ function listValueExpression(
                     separator,
                     valueToOmit,
                     ["var", nextListStartVariable],
-                    numReplacements - 1
+                    numReplacements - 1,
                   ),
                 ],
               ],
@@ -316,7 +316,7 @@ export function listValuesExpression(valueList, separator, valueToOmit) {
       separator,
       ["var", valueToOmitVariable],
       0,
-      maxSeparators
+      maxSeparators,
     ),
   ];
 }
@@ -463,14 +463,14 @@ export const localizedNameWithLocalGloss = [
           startsWithExpression(
             ["var", localizedNameVariable],
             ["get", "name"],
-            ["var", diacriticInsensitiveCollatorVariable]
+            ["var", diacriticInsensitiveCollatorVariable],
           ),
           // ...then replace the common prefix with the local name.
           [
             "format",
             overwritePrefixExpression(
               ["var", localizedNameVariable],
-              ["var", nameListVariable]
+              ["var", nameListVariable],
             ),
           ],
           // If the name in the preferred language is the same as the name in the
@@ -479,14 +479,14 @@ export const localizedNameWithLocalGloss = [
           endsWithExpression(
             ["var", localizedNameVariable],
             ["get", "name"],
-            ["var", diacriticInsensitiveCollatorVariable]
+            ["var", diacriticInsensitiveCollatorVariable],
           ),
           // ...then replace the common suffix with the local name.
           [
             "format",
             overwriteSuffixExpression(
               ["var", localizedNameVariable],
-              ["var", nameListVariable]
+              ["var", nameListVariable],
             ),
           ],
           // Otherwise, gloss the name in the local language if it differs from the

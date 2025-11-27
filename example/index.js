@@ -42,14 +42,14 @@ addEventListener("load", () => {
 
   maplibregl.setRTLTextPlugin(
     "https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.min.js",
-    true
+    true,
   );
 
   map.once("styledata", (event) => {
     map.setLayoutProperty(
       "place-labels",
       "text-field",
-      maplibregl.Diplomat.localizedNameWithLocalGloss
+      maplibregl.Diplomat.localizedNameWithLocalGloss,
     );
     let locales = maplibregl.Diplomat.getLocales();
     let style = map.getStyle();
@@ -59,10 +59,10 @@ addEventListener("load", () => {
 
   addEventListener("hashchange", (event) => {
     let oldLanguage = maplibregl.Diplomat.getLanguageFromURL(
-      new URL(event.oldURL)
+      new URL(event.oldURL),
     );
     let newLanguage = maplibregl.Diplomat.getLanguageFromURL(
-      new URL(event.newURL)
+      new URL(event.newURL),
     );
     if (oldLanguage !== newLanguage) {
       let locales = maplibregl.Diplomat.getLocales();

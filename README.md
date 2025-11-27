@@ -37,17 +37,17 @@ map.once("styledata", (event) => {
   map.setLayoutProperty(
     "country-labels",
     "text-field",
-    maplibregl.Diplomat.localizedName
+    maplibregl.Diplomat.localizedName,
   );
   map.setLayoutProperty(
     "city-labels",
     "text-field",
-    maplibregl.Diplomat.localizedNameWithGloss
+    maplibregl.Diplomat.localizedNameWithGloss,
   );
   map.setLayoutProperty(
     "road-labels",
     "text-field",
-    maplibregl.Diplomat.localizedNameInline
+    maplibregl.Diplomat.localizedNameInline,
   );
 
   // Localize the layers.
@@ -63,10 +63,10 @@ If you set the `hash` option to a string when creating the `Map`, you can have t
 ```js
 addEventListener("hashchange", (event) => {
   let oldLanguage = maplibregl.Diplomat.getLanguageFromURL(
-    new URL(event.oldURL)
+    new URL(event.oldURL),
   );
   let newLanguage = maplibregl.Diplomat.getLanguageFromURL(
-    new URL(event.newURL)
+    new URL(event.newURL),
   );
 
   if (oldLanguage !== newLanguage) {
@@ -108,7 +108,7 @@ Example:
 map.setLayoutProperty(
   "country-labels",
   "text-field",
-  maplibregl.Diplomat.localizedName
+  maplibregl.Diplomat.localizedName,
 );
 ```
 
@@ -124,7 +124,7 @@ Example:
 map.setLayoutProperty(
   "road-labels",
   "text-field",
-  maplibregl.Diplomat.localizedNameInline
+  maplibregl.Diplomat.localizedNameInline,
 );
 ```
 
@@ -140,7 +140,7 @@ Example:
 map.setLayoutProperty(
   "city-labels",
   "text-field",
-  maplibregl.Diplomat.localizedNameWithGloss
+  maplibregl.Diplomat.localizedNameWithGloss,
 );
 ```
 
@@ -160,7 +160,7 @@ Example:
 map.setLayoutProperty(
   "boundary-edge-labels",
   "text-field",
-  getCountryName(["get", "adm0_l"])
+  getCountryName(["get", "adm0_l"]),
 );
 ```
 
