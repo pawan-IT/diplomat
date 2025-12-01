@@ -34,7 +34,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild index.js --bundle --outdir=dist",
+    "build": "esbuild index.js --bundle --minify --sourcemap --outdir=dist",
     "clean": "shx rm -rf dist build",
     "format": "prettier --write --list-different .",
     "start": "shx cp -r example dist && open 'http://127.0.0.1:8000/example/#map=4/40.5/-94&language=got' && esbuild index.js --bundle --outdir=dist --servedir=dist --watch",
